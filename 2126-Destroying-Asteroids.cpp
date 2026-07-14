@@ -6,14 +6,14 @@ public:
         for(int i:arr){
             freq[i]++;
         }
-        int i=1;
+        long long i=1;
         while(i<=n && mass>=i){
             while(i<=n && freq[i]==0){
                 i++;
             }
             if(i>n || i>mass) break;
-            mass+=i;
-            freq[i]--;
+            mass=(mass+freq[i]*i);
+            i++;
         }
         return i>n;
     }
