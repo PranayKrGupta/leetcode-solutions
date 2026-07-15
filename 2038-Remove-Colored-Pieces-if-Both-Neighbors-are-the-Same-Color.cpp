@@ -14,7 +14,6 @@ public:
                 if(a[i-1]==a[i] && a[i]==a[i+1] && a[i+1]=='B'){
                     scoreB++;
                 }
-                cout<<scoreA<<' '<<scoreB<<endl;
             }
             return scoreA>scoreB;
     }
