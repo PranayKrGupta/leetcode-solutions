@@ -10,13 +10,7 @@ public:
             if(v==1){
                 return -1;
             }
-            if(v%3==0){
-                s+=v/3;
-            }else if(v%3==2){
-                s+=v/3+1;
-            }else if(v%3==1){
-                s+=(v/3-1)+2;
-            }
+            s+=ceil(v/3.0);
         }
             return s;
     }
