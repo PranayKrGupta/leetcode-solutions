@@ -1,4 +1,10 @@
 class Solution {
+    static bool comp(pair<int,int> a,pair<int,int> b){
+        if(a.first==b.first){
+            return a.second>b.second;
+        }
+        return a.first<b.first;
+    }
 public:
     vector<int> frequencySort(vector<int>& nums) {
         unordered_map<int,int> mp;
@@ -12,21 +18,7 @@ public:
             v[c].first=o;
             v[c++].second=i;
         }
-        for(int i=0;i<v.size()-1;i++){
-            bool swapped = false;
-            for(int j=0;j<v.size()-i-1;j++){
-                if(v[j].first>v[j+1].first){
-                    swap(v[j],v[j+1]);
-                    swapped=true;
-                }else if(v[j].first==v[j+1].first && v[j].second<v[j+1].second){
-                    swap(v[j],v[j+1]);
-                    swapped=true;
-                }
-            }
-            if(!swapped){
-                break;
-            }
-        }
+        sort(v.begin(),v.end(),comp);
         vector<int> ans;
         for(const auto & [i,j]:v){
             for(int k=0;k<i;k++){
