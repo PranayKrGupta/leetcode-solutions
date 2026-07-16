@@ -9,13 +9,14 @@ public:
         for(int j=0;j<n;j++){
             if(nums[j]==0){
                 zero++;
-                while(zero>k && i<=j){
-                    if(nums[i]==0){
-                        zero--;
-                    }
-                    i++;
-                }
             }
+            if(zero>k){
+                if(nums[i]==0){
+                    zero--;
+                }
+                i++;
+            }
+            if(zero<=k)
             maxi=max(j-i+1,maxi);
         }
         return maxi;
