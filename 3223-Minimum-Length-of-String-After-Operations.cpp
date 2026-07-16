@@ -13,8 +13,7 @@ public:
             else if(v&1){
                 sum++;
             }else{
-                sum++;
-                sum++;
+                sum+=2;
             }
         }
         return sum;
