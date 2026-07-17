@@ -1,14 +1,13 @@
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        int ans=0;
-        for(int i=0;i<32;i++){
-            int k=0;
-            for(int j:nums){
-                k+=(j>>i)&1;
+        sort(nums.begin(),nums.end());
+        for(int i=1;i<nums.size();i+=3){
+            if(nums[i-1]!=nums[i+1]){
+                if(nums[i-1]!=nums[i]) return nums[i-1];
+                else return nums[i+1];
             }
-            ans=ans|(k%3)<<i;
         }
-        return ans;
+        return nums.back();
     }
 };
