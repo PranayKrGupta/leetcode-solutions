@@ -1,12 +1,15 @@
+/*
+ gcd of n & n+1 is 1;
+ gcd of 1st n Even numbers = n(n+1);
+ gcd of 1st n Odd numbers = n*n;
+
+    Therefore , gcd(n*n,n(n+1))=n;
+
+*/
+
 class Solution {
-    int gcd(int a,int b){
-        if(b==0) return a;
-        return gcd(b,a%b);
-    }
 public:
     int gcdOfOddEvenSums(int n) {
-        int sumE=(n/2.0)*(2*2+(n-1)*2);
-        int sumO=(n/2.0)*(2*1+(n-1)*2);
-        return gcd(max(sumE,sumO),min(sumE,sumO));
+        return n;
     }
 };
