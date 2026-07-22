@@ -12,8 +12,7 @@ public:
             mp[i]++;
         }
         for(const auto &[i,v]:mp){
-            pair<int,int> p={v,i};
-            q.push(p);
+            q.push({v,i});
             if(q.size()>k){
                 q.pop();
             }
