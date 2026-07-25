@@ -17,8 +17,7 @@ class Solution {
         i++;
         if(i==k) return r->val;
         int rr=sr(r->right,k,i);
-        if(rr!=-1) return rr;
-        return -1;
+        return rr;
     }
 public:
     int kthSmallest(TreeNode* root, int k) {
