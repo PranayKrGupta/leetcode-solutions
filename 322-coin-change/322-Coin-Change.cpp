@@ -12,10 +12,13 @@ class Solution {
         int v=fun(coins,dp,i-1,amount);
         if(amount>=coins[i]){
             int x=fun(coins,dp,i,amount-coins[i]);
-            if(x!=-1 && v!=-1){
-                v=min(v,x+1);
-            }else if(x!=-1){
-                v=x+1;
+            // Only update v if using the coin gave us a valid answer
+            if (x != -1) {
+                if (v == -1) {
+                    v = x + 1; // If v was invalid, just take x + 1
+                } else {
+                    v = min(v, x + 1); // If both are valid, take the minimum
+                }
             }
         }
         return dp[i][amount]=v;
