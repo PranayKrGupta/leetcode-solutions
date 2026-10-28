@@ -10,15 +10,24 @@
  * };
  */
 class Solution {
+    // int sum(TreeNode *root, int & maxi){
+    //     if(root==nullptr) return 0;
+    //     int l=sum(root->left,maxi);
+    //     int r=sum(root->right,maxi);
+    //     int n=root->val;
+    //     int arc_sum = l+r+n;
+    //     int sider_sum= n+max(l,r);
+    //     maxi=max({maxi,arc_sum,sider_sum,n});
+    //     return max(n,sider_sum);
+    // }
     int sum(TreeNode *root, int & maxi){
         if(root==nullptr) return 0;
-        int l=sum(root->left,maxi);
-        int r=sum(root->right,maxi);
+        int l=max(0,sum(root->left,maxi));
+        int r=max(0,sum(root->right,maxi));
         int n=root->val;
         int arc_sum = l+r+n;
-        int sider_sum= n+max(l,r);
-        maxi=max({maxi,arc_sum,sider_sum,n});
-        return max(n,sider_sum);
+        maxi=max(maxi,arc_sum);
+        return n+max(l,r);
     }
 public:
     int maxPathSum(TreeNode* root) {
