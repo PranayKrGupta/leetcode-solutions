@@ -1,25 +1,21 @@
 class Solution {
-    int fun(vector<int> & coins,vector<vector<int>> &dp,int i,int a ){
-        if(a==0){
-            return 1;
-        }
-        if(i<0){
-            return 0;
-        }
-        if(dp[i][a]!=-1){
-            return dp[i][a];
-        }
-        int not_take=fun(coins,dp,i-1,a);
-        int take=0;
-        if(a>=coins[i]){
-            take=fun(coins,dp,i,a-coins[i]);
-        }
-        return dp[i][a] = take + not_take;
-    }
 public:
     int change(int amount, vector<int>& coins) {
         int n=coins.size();
-        vector<vector<int>> dp(n+1,vector<int> (amount+1,-1)) ;
-        return fun(coins,dp,n-1,amount);
+        vector<unsigned int> dpc(amount+1),dp(amount+1);
+        dp[0]=1; // pichla row
+        dpc[0]=1; // current row
+        for(int i=0;i<n;i++){
+            for(int j=0;j<=amount;j++){
+                unsigned int not_take=dp[j];
+                unsigned int take=0;
+                if(j>=coins[i]){
+                    take=dpc[j-coins[i]];
+                }
+                dpc[j]=take+not_take;
+            }
+            dp=dpc;
+        }
+        return dpc[amount];
     }
 };
