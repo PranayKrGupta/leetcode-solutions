@@ -1,12 +1,17 @@
 class Solution {
 public:
     int hIndex(vector<int>& citations) {
-        sort(citations.begin(),citations.end());
         int n=citations.size();
-        for(int i=0;i<n;i++){
-            if(citations[i]>=(n-i)){
-                return (n-i);
-            }
+        vector<int> count(n+1);
+        for(int i:citations){
+            if(i>n) count[n]++;
+            else
+            count[i]++;
+        }
+        int papers=0;
+        for(int i=n;i>=0;i--){
+            papers+=count[i];
+            if(papers>=i) return i;
         }
         return 0;
     }
